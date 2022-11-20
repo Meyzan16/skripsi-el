@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use App\Models\tb_data_kriteria;
 
 class DatakriteriaController extends Controller
 {
@@ -14,7 +15,9 @@ class DatakriteriaController extends Controller
      */
     public function index()
     {
-        return view('Admin.main.datakriteria');
+        $data = tb_data_kriteria::all();
+
+        return view('Admin.main.datakriteria', compact('data'));
     }
 
     /**

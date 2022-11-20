@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class tb_data_kriteria extends Model
 {
     use HasFactory;
+
+    
 }
