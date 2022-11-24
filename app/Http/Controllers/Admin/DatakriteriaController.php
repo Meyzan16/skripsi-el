@@ -15,6 +15,7 @@ class DatakriteriaController extends Controller
      */
     public function index()
     {
+        
         $data = tb_data_kriteria::all();
 
         return view('Admin.main.datakriteria', compact('data'));

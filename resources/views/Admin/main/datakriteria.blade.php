@@ -1,7 +1,7 @@
 
          @extends('admin.layout.layout')
 
-         @section('content')
+         @section('content')    
             <div class="page-heading">
                 <div class="page-title">
                     <div class="row">
@@ -102,4 +102,4 @@
         
         @endsection
            
-        @endsection
+ 

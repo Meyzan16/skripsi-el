@@ -10,4 +10,5 @@ class tb_data_kriteria extends Model
     use HasFactory;
 
     
+    
 }
