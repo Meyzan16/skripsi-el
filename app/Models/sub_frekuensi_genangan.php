@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class sub_frekuensi_genangan extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'kode_kriteria','nama_sub_kriteria', 'nilai'
+    ];
 }

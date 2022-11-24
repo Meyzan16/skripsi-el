@@ -39,7 +39,17 @@ class DataSubKriteriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //tinggi genangan
+        $sub_tinggi_genangan = $request->nama_kriteria_tinggi_genangan;
+        $nilai_tinggi_genangan = $request->nilai_tinggi_genangan;
+
+        sub_tinggi_genangan::create([
+            'kode_kriteria' => 'C1',
+            'nama_sub_kriteria' => $sub_tinggi_genangan,
+            'nilai' => $nilai_tinggi_genangan,
+
+        ]);
+        return redirect()->route('data-sub-kriteria.index')->with(['success' =>  'Data Berhasil Di simpan']);
     }
 
     /**
@@ -76,14 +86,11 @@ class DataSubKriteriaController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
+
     public function destroy($id)
     {
-        //
+        sub_tinggi_genangan::where('id_tinggi_genangan', $id)->delete();   
+        return redirect()->route('data-sub-kriteria.index')->with(['success' =>  'Data Berhasil dihapus']);
     }
 }

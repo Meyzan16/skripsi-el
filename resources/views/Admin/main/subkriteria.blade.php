@@ -35,7 +35,13 @@
                     <div class="card">
                         <div class="card-header">
                              <h4>Tinggi genangan</h4>
+
+                             <button type="button" class="mr-3  btn btn-outline-primary d-block justify-content-end"
+                                data-bs-toggle="modal" data-bs-target="#tambah_tinggi_genangan">
+                                &nbsp;Tambah Data
+                                </button>
                         </div>
+
                         <div class="card-body">
                             <table class="table table-striped">
                                 <thead>
@@ -55,7 +61,13 @@
                                         <td>{{ $item->tb_data_kriteria->nama_kriteria }}</td>
                                         <td>{{ $item->nama_sub_kriteria }}</td>   
                                         <td>{{ $item->nilai }}</td>
-                                        <td>  <a class="badge bg-warning"   data-bs-toggle="modal" data-bs-target="#edit_data">  <i class="fa fa-edit"> </i>  </a>
+                                        <td> 
+                                         <a class="badge bg-warning"   data-bs-toggle="modal" data-bs-target="#edit_data">  <i class="fa fa-edit"> </i>  </a>
+                                        <form action="{{ route('data-sub-kriteria.destroy', $item->id_tinggi_genangan) }}" method="POST" class="d-inline">
+                                            {{ csrf_field() }}  {{ method_field("DELETE") }}
+                                            <button class="badge bg-danger border-0" onclick="return confirm('Yakin , ingin menghapus data ?')" >  <i class="fa fa-trash"> </i>
+                                            </button>
+                                        </form>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -100,5 +112,56 @@
 
                 </section>
             </div>  
+
+{{-- tinggi genangan --}}
+ <div class="modal fade" id="tambah_tinggi_genangan" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
+            role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle"> Tambah Data
+                    </h5>
+                    <button type="button" class="close" data-bs-dismiss="modal"
+                        aria-label="Close">
+                        <i data-feather="x"></i>
+                    </button>
+                </div>
+                <form action="{{ route('data-sub-kriteria.store') }}" method="POST">
+                    @csrf 
+
+                        <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="nama_kriteria">Nama Sub Kriteria</label>
+                                    <input type="text" name="nama_kriteria_tinggi_genangan"  class="form-control"  >
+                                    {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
+                                </div>
+                                <div class="form-group">
+                                    <label for="bobot_kriteria">Nilai</label>
+                                    <input type="text" name="nilai_tinggi_genangan"  class="form-control"  >
+                                    {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
+                                </div>
+                         </div>
+
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-light-secondary"
+                                    data-bs-dismiss="modal">
+                                    <i class="bx bx-x d-block d-sm-none"></i>
+                                    <span class="d-none d-sm-block">Kembali</span>
+                                </button>
+                
+                                
+                                    <button type="submit" class="btn btn-primary ml-1">
+                                        <i class="bx bx-check d-block d-sm-none"></i>
+                                        <span class="d-none d-sm-block">Simpan</span>
+                                    </button>
+                                
+                            </div>
+                </form>
+            </div>
+        </div>
+</div>
+
         @endsection
            
