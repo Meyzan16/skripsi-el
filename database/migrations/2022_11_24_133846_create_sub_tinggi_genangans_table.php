@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('failed_jobs', function (Blueprint $table) {
-            $table->id();
-            $table->string('uuid')->unique();
-            $table->text('connection');
-            $table->text('queue');
-            $table->longText('payload');
-            $table->longText('exception');
-            $table->timestamp('failed_at')->useCurrent();
+        Schema::create('sub_tinggi_genangans', function (Blueprint $table) {
+            $table->increments('id_tinggi_genangan');
+            $table->string('kode_kriteria',4)->nullable();
+            $table->string('nama_sub_kriteria',100)->nullable();
+            $table->string('nilai',3)->nullable();
+            $table->timestamps();
         });
     }
 
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('failed_jobs');
+        Schema::dropIfExists('sub_tinggi_genangans');
     }
 };

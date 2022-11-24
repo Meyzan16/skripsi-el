@@ -8,6 +8,18 @@
                         <div class="col-12 col-md-6 order-md-1 order-last">
                             <h3>Data Kriteria</h3>
                         </div>
+
+                        <div class="div">
+        @if(session()->has('success'))
+        <div class="autohide">
+            <div class="alert alert-success autohide" role="alert">
+             {{ session('success') }}
+            </div>    
+        </div>
+        @endif
+    </div>
+
+
                         <div class="col-12 col-md-6 order-md-2 order-first">
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                 <ol class="breadcrumb">
@@ -75,11 +87,22 @@
                         </div>
                         <form action="{{ route('data-kriteria.update', $item1->kode_kriteria) }}" method="POST">
                             @csrf  @method('patch')
-                            <div class="modal-body">
-                                <h6 class="modal-title" id="exampleModalCenterTitle"> Nama  </h6>
-                                <input type="text" value="{{  old('nama', $item1->nama_kriteria)  }}" class="form-control" name="nama_kriteria">
-                                <input type="text" value="{{  old('nama', $item1->bobot_kriteria)  }}" class="form-control" name="bobot_kriteria">
+                            
+                             <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="nama_kriteria">Nama Kriteria</label>
+                                    <input type="text" name="nama_kriteria" value="{{  old('nama_kriteria', $item1->nama_kriteria)  }}" class="form-control"  >
+                                    {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
+                                </div>
+                                <div class="form-group">
+                                    <label for="bobot_kriteria">Bobot Kriteria</label>
+                                    <input type="text" name="bobot_kriteria" onkeypress="return hanyaAngka(event)" value="{{  old('bobot_kriteria', $item1->bobot_kriteria)  }}" class="form-control"  >
+                                    {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
+                                </div>
+
                             </div>
+                               
+                                
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-light-secondary"
                                     data-bs-dismiss="modal">
@@ -94,6 +117,7 @@
                                     </button>
                                 
                             </div>
+
                         </form>
                     </div>
                 </div>
@@ -102,4 +126,15 @@
         
         @endsection
            
+ @push('addon-script')
+<script>
+		function hanyaAngka(evt) {
+		  var charCode = (evt.which) ? evt.which : event.keyCode
+		   if (charCode > 31 && (charCode < 48 || charCode > 57))
  
+		    return false;
+		  return true;
+		}
+	</script>
+
+@endpush

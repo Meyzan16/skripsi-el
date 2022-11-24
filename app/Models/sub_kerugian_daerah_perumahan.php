@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class tb_sub_kriteria extends Model
+class sub_kerugian_daerah_perumahan extends Model
 {
     use HasFactory;
 }

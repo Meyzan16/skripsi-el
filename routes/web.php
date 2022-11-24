@@ -22,7 +22,7 @@ Route::get('/', function () {
 //SISWA
 Route::group([
     'prefix' => 'admin/'], function(){
-    Route::get('/', [DashboardController::Class, 'index'])->name('dashboard');
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('/data-kriteria', DatakriteriaController::class);
 
 });
