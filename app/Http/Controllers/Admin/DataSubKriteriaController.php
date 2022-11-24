@@ -21,22 +21,6 @@ class DataSubKriteriaController extends Controller
         return view('Admin.main.subkriteria', compact('tinggi_genangan', 'luas_genangan'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //tinggi genangan
@@ -52,38 +36,21 @@ class DataSubKriteriaController extends Controller
         return redirect()->route('data-sub-kriteria.index')->with(['success' =>  'Data Berhasil Di simpan']);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
+    
     public function update(Request $request, $id)
     {
-        //
+        $sub_tinggi_genangan = $request->nama_kriteria_tinggi_genangan;
+        $nilai_tinggi_genangan = $request->nilai_tinggi_genangan;
+
+        $item = sub_tinggi_genangan::where('id_tinggi_genangan', $id);
+        $item->update([
+            'nama_sub_kriteria' => $sub_tinggi_genangan,
+            'nilai' => $nilai_tinggi_genangan,
+
+        ]); 
+
+        return redirect()->route('data-sub-kriteria.index')->with(['success' =>  'Data Berhasil diperbarui']);
     }
 
     
