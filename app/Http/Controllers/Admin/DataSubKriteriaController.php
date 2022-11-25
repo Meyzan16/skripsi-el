@@ -9,6 +9,7 @@ use App\Models\sub_kerugian_ekonomi;
 use App\Models\sub_kerugian_daerah_perumahan;
 use App\Models\sub_frekuensi_genangan;
 use App\Models\sub_gangguan_transportasi;
+use App\Models\sub_hak_milik_pribadi;
 
 use Illuminate\Http\Request;
 
@@ -28,8 +29,9 @@ class DataSubKriteriaController extends Controller
         $kerugian_daerah_perumahan = sub_kerugian_daerah_perumahan::all();
         $frekuensi_genangan = sub_frekuensi_genangan::all();
         $gangguan_transportasi = sub_gangguan_transportasi::all();
+        $hak_milik_pribadi = sub_hak_milik_pribadi::all();
 
-        return view('Admin.main.subkriteria', compact('tinggi_genangan', 'luas_genangan' , 'lamanya_genangan' , 'kerugian_ekonomi', 'frekuensi_genangan', 'gangguan_transportasi', 'kerugian_daerah_perumahan'));
+        return view('Admin.main.subkriteria', compact('hak_milik_pribadi', 'tinggi_genangan', 'luas_genangan' , 'lamanya_genangan' , 'kerugian_ekonomi', 'frekuensi_genangan', 'gangguan_transportasi', 'kerugian_daerah_perumahan'));
     }
 
     public function store(Request $request)

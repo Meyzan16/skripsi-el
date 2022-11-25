@@ -11,6 +11,7 @@ use App\Models\sub_kerugian_ekonomi;
 use App\Models\sub_kerugian_daerah_perumahan;
 use App\Models\sub_frekuensi_genangan;
 use App\Models\sub_gangguan_transportasi;
+use App\Models\sub_hak_milik_pribadi;
 
 class tb_data_kriteria extends Model
 {
@@ -50,6 +51,11 @@ class tb_data_kriteria extends Model
     public function sub_gangguan_transportasi()
     {
         return $this->hasMany(sub_gangguan_transportasi::class);
+    }
+
+    public function sub_hak_milik_pribadi()
+    {
+        return $this->hasMany(sub_hak_milik_pribadi::class);
     }
     
 }
