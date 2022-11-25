@@ -25,4 +25,15 @@ Route::group([
     Route::get('/', [DashboardController::Class, 'index'])->name('dashboard');
     Route::resource('/data-kriteria', DatakriteriaController::class);
 
+    // Route::group(['prefix'  => 'orang-tua/'],function(){
+    //     Route::get('/', [DatakriteriaController::Class, 'index'])->name('admin.biodata-diri.index');
+    //     // Route::get('{nisn}/show', [DatakriteriaController::Class, 'show'])->name('admin.data-ortu.show');
+    //     // Route::get('{nisn}/edit', [DatakriteriaController::Class, 'edit'])->name('admin.data-ortu.edit');
+    //     // Route::patch('{nisn}/update', [DatakriteriaController::Class, 'update'])->name('admin.data-ortu.update');
+    //     // //verifikasi data biodata diri
+    //     // Route::patch('{nisn}/verifikasiOrangtua', [DatakriteriaController::Class, 'verifikasi'])->name('admin.data-ortu.verifikasi');
+    //     // Route::patch('{nisn}/verifikasiOrangtuaTolak', [DatakriteriaController::Class, 'verifikasi_tolak'])->name('admin.data-ortu.verifikasi_tolak');
+    // });
+
+
 });
