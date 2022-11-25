@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sub_ganguan_transportasis', function (Blueprint $table) {
-            $table->increments('id_gangguan_tranportasi');
+        Schema::create('sub_gangguan_sosials', function (Blueprint $table) {
+            $table->increments('id_gangguan_sosial');
             $table->string('kode_kriteria',4)->nullable();
             $table->string('nama_sub_kriteria',100)->nullable();
             $table->string('nilai',3)->nullable();
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sub_ganguan_transportasis');
+        Schema::dropIfExists('sub_ganguan_sosials');
     }
 };

@@ -298,6 +298,53 @@
                         </div>
                     </div>
 
+                    <div class="card">
+                        <div class="card-header">
+                             <h4>Gangguan Transportasi</h4>
+                             <button type="button" class="mr-3  btn btn-outline-primary d-block justify-content-end"
+                                 data-bs-toggle="modal" data-bs-target="#tambah_gangguan_transportasi">
+                                 &nbsp;Tambah Data
+                                 </button>
+                        </div>
+
+                        <div class="card-body">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Kode Kriteria</th>
+                                        <th>Nama Sub Kriteria</th>
+                                        <th>Nilai</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  
+                                    @foreach ($gangguan_transportasi as $item)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $item->tb_data_kriteria->nama_kriteria }}</td>
+                                        <td>{{ $item->nama_sub_kriteria }}</td>   
+                                        <td>{{ $item->nilai }}</td>
+                                        <td>
+                                            <a class="badge bg-warning"   data-bs-toggle="modal" data-bs-target="#edit_data_gangguan_transportasi{{ $item->id_gangguan_transportasi }}">  <i class="fa fa-edit"> </i>  </a>                                      
+                                            
+                                            <form action="{{ route('data-gangguan-transportasi.destroy', $item->id_gangguan_transportasi) }}" method="POST" class="d-inline">
+                                                {{ csrf_field() }}  {{ method_field("DELETE") }}
+                                                <button class="badge bg-danger border-0" onclick="return confirm('Yakin , ingin menghapus data ?')" >  <i class="fa fa-trash"> </i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+                    
+
                 </section>
             </div>  
 
@@ -608,7 +655,6 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 {{-- tutup lamanya genangan --}}
 
 
-
 {{-- kerugian ekonomi --}}
 <div class="modal fade" id="tambah_kerugian_ekonomi" tabindex="-1" role="dialog"
 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -808,7 +854,7 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         </div>
     </div>
 @endforeach
-{{-- tutupkerugian ekonomi --}}
+{{-- tutup kerugian daerah perumahan --}}
 
 
 {{-- frekuensi genangan --}}
@@ -818,7 +864,7 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     role="document">
     <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalCenterTitle"> Tambah Data Kerugian Daerah Perumahan
+            <h5 class="modal-title" id="exampleModalCenterTitle"> Tambah Data Frekuensi Genangan
             </h5>
             <button type="button" class="close" data-bs-dismiss="modal"
                 aria-label="Close">
@@ -909,7 +955,109 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         </div>
     </div>
 @endforeach
-{{-- tutupkerugian ekonomi --}}
+{{-- tutup frekuensi genangan --}}
+
+
+{{-- gangguan transportasi  --}}
+<div class="modal fade" id="tambah_gangguan_transportasi" tabindex="-1" role="dialog"
+aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
+    role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle"> Tambah Data Gangguan Transportasi
+            </h5>
+            <button type="button" class="close" data-bs-dismiss="modal"
+                aria-label="Close">
+                <i data-feather="x"></i>
+            </button>
+        </div>
+        <form action="{{ route('data-gangguan-transportasi.store') }}" method="POST">
+            @csrf 
+
+                    <div class="modal-body">
+                            <div class="form-group">
+                                <label for="nama_kriteria">Nama Sub Kriteria</label>
+                                <input type="text" name="nama_kriteria_gangguan_transportasi"  class="form-control"  >
+                                {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
+                            </div>
+                            <div class="form-group">
+                                <label for="bobot_kriteria">Nilai</label>
+                                <input type="text" name="nilai_gangguan_transportasi" maxlength="1" onkeypress="return hanyaAngka(event)"  class="form-control"  >
+                                {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light-secondary"
+                            data-bs-dismiss="modal">
+                            <i class="bx bx-x d-block d-sm-none"></i>
+                            <span class="d-none d-sm-block">Kembali</span>
+                        </button>
+        
+                        
+                            <button type="submit" class="btn btn-primary ml-1">
+                                <i class="bx bx-check d-block d-sm-none"></i>
+                                <span class="d-none d-sm-block">Simpan</span>
+                            </button>
+                        
+                    </div>
+        </form>
+    </div>
+</div>
+</div>
+@foreach ($gangguan_transportasi as $item1)
+    <div class="modal fade" id="edit_data_gangguan_transportasi{{ $item1->id_gangguan_transportasi  }}" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
+            role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle"> Edit Data
+                    </h5>
+                    <button type="button" class="close" data-bs-dismiss="modal"
+                        aria-label="Close">
+                        <i data-feather="x"></i>
+                    </button>
+                </div>
+                <form action="{{ route('data-gangguan-transportasi.update', $item1->id_gangguan_transportasi) }}" method="POST">
+                    @csrf  @method('patch')
+                     <div class="modal-body">
+                        <div class="form-group">
+                            <label for="nama_kriteria">Nama Kriteria</label>
+                            <input type="text" name="nama_kriteria_gangguan_transportasi" value="{{  old('nama_sub_kriteria', $item1->nama_sub_kriteria)  }}" class="form-control"  >
+                            {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
+                        </div>
+                        <div class="form-group">
+                            <label for="bobot_kriteria">Bobot Kriteria</label>
+                            <input type="text" name="nilai_gangguan_transportasi" maxlength="1" onkeypress="return hanyaAngka(event)" value="{{  old('nilai', $item1->nilai)  }}" class="form-control"  >
+                            {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
+                        </div>
+
+                    </div>
+                       
+                        
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light-secondary"
+                            data-bs-dismiss="modal">
+                            <i class="bx bx-x d-block d-sm-none"></i>
+                            <span class="d-none d-sm-block">Kembali</span>
+                        </button>
+        
+                        
+                            <button type="submit" class="btn btn-primary ml-1">
+                                <i class="bx bx-check d-block d-sm-none"></i>
+                                <span class="d-none d-sm-block">Simpan</span>
+                            </button>
+                        
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+@endforeach
+{{-- gangguan transportasi  --}}
+
 
 
 
