@@ -7,6 +7,7 @@ use App\Models\sub_tinggi_genangan;
 use App\Models\sub_lamanya_genangan;
 use App\Models\sub_kerugian_ekonomi;
 use App\Models\sub_kerugian_daerah_perumahan;
+use App\Models\sub_frekuensi_genangan;
 
 use Illuminate\Http\Request;
 
@@ -24,8 +25,9 @@ class DataSubKriteriaController extends Controller
         $lamanya_genangan = sub_lamanya_genangan::all();
         $kerugian_ekonomi = sub_kerugian_ekonomi::all();
         $kerugian_daerah_perumahan = sub_kerugian_daerah_perumahan::all();
+        $frekuensi_genangan = sub_frekuensi_genangan::all();
 
-        return view('Admin.main.subkriteria', compact('tinggi_genangan', 'luas_genangan' , 'lamanya_genangan' , 'kerugian_ekonomi', 'kerugian_daerah_perumahan'));
+        return view('Admin.main.subkriteria', compact('tinggi_genangan', 'luas_genangan' , 'lamanya_genangan' , 'kerugian_ekonomi', 'frekuensi_genangan', 'kerugian_daerah_perumahan'));
     }
 
     public function store(Request $request)

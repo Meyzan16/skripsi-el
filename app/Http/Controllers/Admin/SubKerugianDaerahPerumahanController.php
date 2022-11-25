@@ -27,8 +27,6 @@ class SubKerugianDaerahPerumahanController extends Controller
     
     public function update(Request $request, $id)
     {
-       
-
         // luas genangan
         $sub_kerugian_daerah_perumahan = $request->nama_kriteria_kerugian_daerah_perumahan;
         $nilai_kerugian_daerah_perumahan = $request->nilai_kerugian_daerah_perumahan;
@@ -38,10 +36,6 @@ class SubKerugianDaerahPerumahanController extends Controller
             'nama_sub_kriteria' => $sub_kerugian_daerah_perumahan,
             'nilai' => $nilai_kerugian_daerah_perumahan,
         ]); 
-
-
-
-
         return redirect()->route('data-sub-kriteria.index')->with(['success' =>  'Data Berhasil diperbarui']);
     }
 

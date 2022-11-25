@@ -9,6 +9,7 @@ use App\Models\sub_luas_genangan;
 use App\Models\sub_lamanya_genangan;
 use App\Models\sub_kerugian_ekonomi;
 use App\Models\sub_kerugian_daerah_perumahan;
+use App\Models\sub_frekuensi_genangan;
 
 class tb_data_kriteria extends Model
 {
@@ -37,6 +38,12 @@ class tb_data_kriteria extends Model
     public function sub_kerugian_daerah_perumahan()
     {
         return $this->hasMany(sub_kerugian_daerah_perumahan::class);
+    }
+
+
+    public function sub_frekuensi_genangan()
+    {
+        return $this->hasMany(sub_frekuensi_genangan::class);
     }
     
 }
