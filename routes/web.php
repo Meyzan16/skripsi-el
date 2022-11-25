@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\SubKerugianDaerahPerumahanController;
 use App\Http\Controllers\Admin\SubFrekuensiGenanganController;
 use App\Http\Controllers\Admin\SubGangguanTransportasiController;
 use App\Http\Controllers\Admin\SubHakMilikPribadiController;
+use App\Http\Controllers\Admin\SubGangguanSosialController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,7 +41,7 @@ Route::group([
     Route::resource('/data-frekuensi-genangan', SubFrekuensiGenanganController::class);
     Route::resource('/data-gangguan-transportasi', SubGangguanTransportasiController::class);
     Route::resource('/data-hak-milik-pribadi', SubHakMilikPribadiController::class);
-    Route::resource('/data-gangguan-sosial', SubHakMilikPribadiController::class);
+    Route::resource('/data-gangguan-sosial', SubGangguanSosialController::class);
 
     // Route::group(['prefix'  => 'orang-tua/'],function(){
     //     Route::get('/', [DatakriteriaController::Class, 'index'])->name('admin.biodata-diri.index');
