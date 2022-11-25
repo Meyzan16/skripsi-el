@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\sub_tinggi_genangan;
 use App\Models\sub_luas_genangan;
+use App\Models\sub_lamanya_genangan;
 
 class tb_data_kriteria extends Model
 {
@@ -19,6 +20,11 @@ class tb_data_kriteria extends Model
     public function sub_luas_genangan()
     {
         return $this->hasMany(sub_luas_genangan::class);
+    }
+
+    public function sub_lamanya_genangan()
+    {
+        return $this->hasMany(sub_lamanya_genangan::class);
     }
     
 }

@@ -6,7 +6,7 @@ use App\Models\sub_luas_genangan;
 
 use Illuminate\Http\Request;
 
-class subLuasGenanganController extends Controller
+class SubLuasGenanganController extends Controller
 {
     
     public function store(Request $request)

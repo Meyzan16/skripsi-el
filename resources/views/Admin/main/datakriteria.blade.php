@@ -126,7 +126,9 @@
         
         @endsection
            
- @push('addon-script')
+
+        
+@push('addon-script')
 <script>
 		function hanyaAngka(evt) {
 		  var charCode = (evt.which) ? evt.which : event.keyCode
