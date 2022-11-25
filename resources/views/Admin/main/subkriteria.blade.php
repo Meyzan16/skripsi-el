@@ -36,7 +36,7 @@
                         <div class="card-header">
                              <h4>Tinggi genangan</h4>
 
-                             <button type="button" class="mr-3  btn btn-outline-primary d-block justify-content-end"
+                              <button type="button" class="mr-3  btn btn-outline-primary d-block justify-content-end"
                                 data-bs-toggle="modal" data-bs-target="#tambah_tinggi_genangan">
                                 &nbsp;Tambah Data
                                 </button>
@@ -77,9 +77,14 @@
                         </div>
                     </div>
 
+
                     <div class="card">
                         <div class="card-header">
                              <h4>Luas genangan</h4>
+                             <button type="button" class="mr-3  btn btn-outline-primary d-block justify-content-end"
+                                 data-bs-toggle="modal" data-bs-target="#tambah_luas_genangan">
+                                 &nbsp;Tambah Data
+                                 </button>
                         </div>
 
                         <div class="card-body">
@@ -102,7 +107,13 @@
                                         <td>{{ $item->nama_sub_kriteria }}</td>   
                                         <td>{{ $item->nilai }}</td>
                                         <td>
-                                            <a class="badge bg-warning"   data-bs-toggle="modal" data-bs-target="#edit_data">  <i class="fa fa-edit"> </i>  </a>                                      
+                                            <a class="badge bg-warning"   data-bs-toggle="modal" data-bs-target="#edit_data_luas_genangan{{ $item->id_luas_genangan }}">  <i class="fa fa-edit"> </i>  </a>                                      
+                                            
+                                            <form action="{{ route('data-luas-genangan.destroy', $item->id_luas_genangan) }}" method="POST" class="d-inline">
+                                                {{ csrf_field() }}  {{ method_field("DELETE") }}
+                                                <button class="badge bg-danger border-0" onclick="return confirm('Yakin , ingin menghapus data ?')" >  <i class="fa fa-trash"> </i>
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -121,7 +132,7 @@
             role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle"> Tambah Data
+                    <h5 class="modal-title" id="exampleModalCenterTitle"> Tambah Data Tinggi Genangan
                     </h5>
                     <button type="button" class="close" data-bs-dismiss="modal"
                         aria-label="Close">
@@ -139,7 +150,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="bobot_kriteria">Nilai</label>
-                                    <input type="text" name="nilai_tinggi_genangan"  class="form-control"  >
+                                    <input type="text" name="nilai_tinggi_genangan" maxlength="1" onkeypress="return hanyaAngka(event)"  class="form-control"  >
                                     {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
                                 </div>
                          </div>
@@ -163,8 +174,7 @@
             </div>
         </div>
 </div>
-
-  @foreach ($tinggi_genangan as $item1)
+@foreach ($tinggi_genangan as $item1)
             <div class="modal fade" id="edit_data{{ $item1->id_tinggi_genangan  }}" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
@@ -189,7 +199,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="bobot_kriteria">Bobot Kriteria</label>
-                                    <input type="text" name="nilai_tinggi_genangan" onkeypress="return hanyaAngka(event)" value="{{  old('nilai', $item1->nilai)  }}" class="form-control"  >
+                                    <input type="text" name="nilai_tinggi_genangan" maxlength="1" onkeypress="return hanyaAngka(event)" value="{{  old('nilai', $item1->nilai)  }}" class="form-control"  >
                                     {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
                                 </div>
 
@@ -215,20 +225,124 @@
                     </div>
                 </div>
             </div>
-            @endforeach
+@endforeach
+{{-- tutup genangan --}}
 
-        @endsection
 
- @push('addon-script')
-<script>
-		function hanyaAngka(evt) {
-		  var charCode = (evt.which) ? evt.which : event.keyCode
-		   if (charCode > 31 && (charCode < 48 || charCode > 57))
- 
-		    return false;
-		  return true;
-		}
-	</script>
 
-@endpush
+{{-- luas genangan --}}
+<div class="modal fade" id="tambah_luas_genangan" tabindex="-1" role="dialog"
+aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
+    role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle"> Tambah Data Luas Genangan
+            </h5>
+            <button type="button" class="close" data-bs-dismiss="modal"
+                aria-label="Close">
+                <i data-feather="x"></i>
+            </button>
+        </div>
+        <form action="{{ route('data-luas-genangan.store') }}" method="POST">
+            @csrf 
+
+                    <div class="modal-body">
+                            <div class="form-group">
+                                <label for="nama_kriteria">Nama Sub Kriteria</label>
+                                <input type="text" name="nama_kriteria_luas_genangan"  class="form-control"  >
+                                {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
+                            </div>
+                            <div class="form-group">
+                                <label for="bobot_kriteria">Nilai</label>
+                                <input type="text" name="nilai_luas_genangan" maxlength="1" onkeypress="return hanyaAngka(event)"  class="form-control"  >
+                                {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light-secondary"
+                            data-bs-dismiss="modal">
+                            <i class="bx bx-x d-block d-sm-none"></i>
+                            <span class="d-none d-sm-block">Kembali</span>
+                        </button>
+        
+                        
+                            <button type="submit" class="btn btn-primary ml-1">
+                                <i class="bx bx-check d-block d-sm-none"></i>
+                                <span class="d-none d-sm-block">Simpan</span>
+                            </button>
+                        
+                    </div>
+        </form>
+    </div>
+</div>
+</div>
+@foreach ($luas_genangan as $item1)
+    <div class="modal fade" id="edit_data_luas_genangan{{ $item1->id_luas_genangan  }}" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
+            role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle"> Edit Data
+                    </h5>
+                    <button type="button" class="close" data-bs-dismiss="modal"
+                        aria-label="Close">
+                        <i data-feather="x"></i>
+                    </button>
+                </div>
+                <form action="{{ route('data-luas-genangan.update', $item1->id_luas_genangan) }}" method="POST">
+                    @csrf  @method('patch')
+                     <div class="modal-body">
+                        <div class="form-group">
+                            <label for="nama_kriteria">Nama Kriteria</label>
+                            <input type="text" name="nama_kriteria_luas_genangan" value="{{  old('nama_sub_kriteria', $item1->nama_sub_kriteria)  }}" class="form-control"  >
+                            {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
+                        </div>
+                        <div class="form-group">
+                            <label for="bobot_kriteria">Bobot Kriteria</label>
+                            <input type="text" name="nilai_luas_genangan" maxlength="1" onkeypress="return hanyaAngka(event)" value="{{  old('nilai', $item1->nilai)  }}" class="form-control"  >
+                            {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
+                        </div>
+
+                    </div>
+                       
+                        
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light-secondary"
+                            data-bs-dismiss="modal">
+                            <i class="bx bx-x d-block d-sm-none"></i>
+                            <span class="d-none d-sm-block">Kembali</span>
+                        </button>
+        
+                        
+                            <button type="submit" class="btn btn-primary ml-1">
+                                <i class="bx bx-check d-block d-sm-none"></i>
+                                <span class="d-none d-sm-block">Simpan</span>
+                            </button>
+                        
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+@endforeach
+{{-- tutup luas genangan --}}
+
+
+
+@endsection
+        @push('addon-script')
+        <script>
+                function hanyaAngka(evt) {
+                  var charCode = (evt.which) ? evt.which : event.keyCode
+                   if (charCode > 31 && (charCode < 48 || charCode > 57))
+         
+                    return false;
+                  return true;
+                }
+            </script>
+        
+        @endpush
            

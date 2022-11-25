@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\sub_luas_genangan;
 use App\Models\sub_tinggi_genangan;
+
 use Illuminate\Http\Request;
 
 class DataSubKriteriaController extends Controller
@@ -31,8 +32,10 @@ class DataSubKriteriaController extends Controller
             'kode_kriteria' => 'C1',
             'nama_sub_kriteria' => $sub_tinggi_genangan,
             'nilai' => $nilai_tinggi_genangan,
-
         ]);
+
+
+
         return redirect()->route('data-sub-kriteria.index')->with(['success' =>  'Data Berhasil Di simpan']);
     }
 

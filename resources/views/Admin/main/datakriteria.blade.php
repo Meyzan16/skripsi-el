@@ -96,7 +96,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="bobot_kriteria">Bobot Kriteria</label>
-                                    <input type="text" name="bobot_kriteria" onkeypress="return hanyaAngka(event)" value="{{  old('bobot_kriteria', $item1->bobot_kriteria)  }}" class="form-control"  >
+                                    <input type="text" name="bobot_kriteria" maxlength="1" onkeypress="return hanyaAngka(event)" value="{{  old('bobot_kriteria', $item1->bobot_kriteria)  }}" class="form-control"  >
                                     {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
                                 </div>
 

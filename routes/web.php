@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DatakriteriaController;
 use App\Http\Controllers\Admin\DataSubkriteriaController;
+use App\Http\Controllers\Admin\subLuasGenanganController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,7 @@ Route::group([
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('/data-kriteria', DatakriteriaController::class);
     Route::resource('/data-sub-kriteria', DataSubkriteriaController::class);
+    Route::resource('/data-luas-genangan', subLuasGenanganController::class);
 
     // Route::group(['prefix'  => 'orang-tua/'],function(){
     //     Route::get('/', [DatakriteriaController::Class, 'index'])->name('admin.biodata-diri.index');
