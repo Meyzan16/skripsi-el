@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DatakriteriaController;
+use App\Http\Controllers\Admin\DataSubkriteriaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +23,9 @@ Route::get('/', function () {
 //SISWA
 Route::group([
     'prefix' => 'admin/'], function(){
-    Route::get('/', [DashboardController::Class, 'index'])->name('dashboard');
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('/data-kriteria', DatakriteriaController::class);
+    Route::resource('/data-sub-kriteria', DataSubkriteriaController::class);
 
     // Route::group(['prefix'  => 'orang-tua/'],function(){
     //     Route::get('/', [DatakriteriaController::Class, 'index'])->name('admin.biodata-diri.index');

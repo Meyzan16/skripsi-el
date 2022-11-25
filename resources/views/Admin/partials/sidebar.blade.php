@@ -28,6 +28,13 @@
                     </a>
                 </li>
 
+                <li class="sidebar-item {{ request()->is('admin/data-sub-kriteria*') ? 'active' : '' }}">
+                    <a href="{{route('data-sub-kriteria.index')}}" class='sidebar-link'>
+                        <i class="bi bi-grid-fill"></i>
+                        <span>Data Sub Kriteria</span>
+                    </a>
+                </li>
+
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-stack"></i>
