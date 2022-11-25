@@ -166,6 +166,94 @@
                         </div>
                     </div>
 
+                    <div class="card">
+                        <div class="card-header">
+                             <h4>Kerugian Ekonomi</h4>
+                             <button type="button" class="mr-3  btn btn-outline-primary d-block justify-content-end"
+                                 data-bs-toggle="modal" data-bs-target="#tambah_kerugian_ekonomi">
+                                 &nbsp;Tambah Data
+                                 </button>
+                        </div>
+
+                        <div class="card-body">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Kode Kriteria</th>
+                                        <th>Nama Sub Kriteria</th>
+                                        <th>Nilai</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  
+                                    @foreach ($kerugian_ekonomi as $item)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $item->tb_data_kriteria->nama_kriteria }}</td>
+                                        <td>{{ $item->nama_sub_kriteria }}</td>   
+                                        <td>{{ $item->nilai }}</td>
+                                        <td>
+                                            <a class="badge bg-warning"   data-bs-toggle="modal" data-bs-target="#edit_data_kerugian_ekonomi{{ $item->id_kerugian_ekonomi }}">  <i class="fa fa-edit"> </i>  </a>                                      
+                                            
+                                            <form action="{{ route('data-kerugian-ekonomi.destroy', $item->id_kerugian_ekonomi) }}" method="POST" class="d-inline">
+                                                {{ csrf_field() }}  {{ method_field("DELETE") }}
+                                                <button class="badge bg-danger border-0" onclick="return confirm('Yakin , ingin menghapus data ?')" >  <i class="fa fa-trash"> </i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                             <h4>Kerugian Daerah Perumahan</h4>
+                             <button type="button" class="mr-3  btn btn-outline-primary d-block justify-content-end"
+                                 data-bs-toggle="modal" data-bs-target="#tambah_kerugian_daerah_perumahan">
+                                 &nbsp;Tambah Data
+                                 </button>
+                        </div>
+
+                        <div class="card-body">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Kode Kriteria</th>
+                                        <th>Nama Sub Kriteria</th>
+                                        <th>Nilai</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  
+                                    @foreach ($kerugian_daerah_perumahan as $item)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $item->tb_data_kriteria->nama_kriteria }}</td>
+                                        <td>{{ $item->nama_sub_kriteria }}</td>   
+                                        <td>{{ $item->nilai }}</td>
+                                        <td>
+                                            <a class="badge bg-warning"   data-bs-toggle="modal" data-bs-target="#edit_data_kerugian_daerah_perumahan{{ $item->id_kerugian_daerah_perumahan }}">  <i class="fa fa-edit"> </i>  </a>                                      
+                                            
+                                            <form action="{{ route('data-kerugian-daerah-perumahan.destroy', $item->id_kerugian_daerah_perumahan) }}" method="POST" class="d-inline">
+                                                {{ csrf_field() }}  {{ method_field("DELETE") }}
+                                                <button class="badge bg-danger border-0" onclick="return confirm('Yakin , ingin menghapus data ?')" >  <i class="fa fa-trash"> </i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
                 </section>
             </div>  
 
@@ -474,6 +562,209 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     </div>
 @endforeach
 {{-- tutup lamanya genangan --}}
+
+
+
+{{-- kerugian ekonomi --}}
+<div class="modal fade" id="tambah_kerugian_ekonomi" tabindex="-1" role="dialog"
+aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
+    role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle"> Tambah Data Kerugian Ekonomi
+            </h5>
+            <button type="button" class="close" data-bs-dismiss="modal"
+                aria-label="Close">
+                <i data-feather="x"></i>
+            </button>
+        </div>
+        <form action="{{ route('data-kerugian-ekonomi.store') }}" method="POST">
+            @csrf 
+
+                    <div class="modal-body">
+                            <div class="form-group">
+                                <label for="nama_kriteria">Nama Sub Kriteria</label>
+                                <input type="text" name="nama_kriteria_kerugian_ekonomi"  class="form-control"  >
+                                {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
+                            </div>
+                            <div class="form-group">
+                                <label for="bobot_kriteria">Nilai</label>
+                                <input type="text" name="nilai_kerugian_ekonomi" maxlength="1" onkeypress="return hanyaAngka(event)"  class="form-control"  >
+                                {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light-secondary"
+                            data-bs-dismiss="modal">
+                            <i class="bx bx-x d-block d-sm-none"></i>
+                            <span class="d-none d-sm-block">Kembali</span>
+                        </button>
+        
+                        
+                            <button type="submit" class="btn btn-primary ml-1">
+                                <i class="bx bx-check d-block d-sm-none"></i>
+                                <span class="d-none d-sm-block">Simpan</span>
+                            </button>
+                        
+                    </div>
+        </form>
+    </div>
+</div>
+</div>
+@foreach ($kerugian_ekonomi as $item1)
+    <div class="modal fade" id="edit_data_kerugian_ekonomi{{ $item1->id_kerugian_ekonomi  }}" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
+            role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle"> Edit Data
+                    </h5>
+                    <button type="button" class="close" data-bs-dismiss="modal"
+                        aria-label="Close">
+                        <i data-feather="x"></i>
+                    </button>
+                </div>
+                <form action="{{ route('data-kerugian-ekonomi.update', $item1->id_kerugian_ekonomi) }}" method="POST">
+                    @csrf  @method('patch')
+                     <div class="modal-body">
+                        <div class="form-group">
+                            <label for="nama_kriteria">Nama Kriteria</label>
+                            <input type="text" name="nama_kriteria_kerugian_ekonomi" value="{{  old('nama_sub_kriteria', $item1->nama_sub_kriteria)  }}" class="form-control"  >
+                            {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
+                        </div>
+                        <div class="form-group">
+                            <label for="bobot_kriteria">Bobot Kriteria</label>
+                            <input type="text" name="nilai_kerugian_ekonomi" maxlength="1" onkeypress="return hanyaAngka(event)" value="{{  old('nilai', $item1->nilai)  }}" class="form-control"  >
+                            {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
+                        </div>
+
+                    </div>
+                       
+                        
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light-secondary"
+                            data-bs-dismiss="modal">
+                            <i class="bx bx-x d-block d-sm-none"></i>
+                            <span class="d-none d-sm-block">Kembali</span>
+                        </button>
+        
+                        
+                            <button type="submit" class="btn btn-primary ml-1">
+                                <i class="bx bx-check d-block d-sm-none"></i>
+                                <span class="d-none d-sm-block">Simpan</span>
+                            </button>
+                        
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+@endforeach
+{{-- tutupkerugian ekonomi --}}
+
+
+{{-- kerugian daerah perumahan  --}}
+<div class="modal fade" id="tambah_kerugian_daerah_perumahan" tabindex="-1" role="dialog"
+aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
+    role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle"> Tambah Data Kerugian Daerah Perumahan
+            </h5>
+            <button type="button" class="close" data-bs-dismiss="modal"
+                aria-label="Close">
+                <i data-feather="x"></i>
+            </button>
+        </div>
+        <form action="{{ route('data-kerugian-daerah-perumahan.store') }}" method="POST">
+            @csrf 
+
+                    <div class="modal-body">
+                            <div class="form-group">
+                                <label for="nama_kriteria">Nama Sub Kriteria</label>
+                                <input type="text" name="nama_kriteria_kerugian_daerah_perumahan"  class="form-control"  >
+                                {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
+                            </div>
+                            <div class="form-group">
+                                <label for="bobot_kriteria">Nilai</label>
+                                <input type="text" name="nilai_kerugian_daerah_perumahan" maxlength="1" onkeypress="return hanyaAngka(event)"  class="form-control"  >
+                                {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light-secondary"
+                            data-bs-dismiss="modal">
+                            <i class="bx bx-x d-block d-sm-none"></i>
+                            <span class="d-none d-sm-block">Kembali</span>
+                        </button>
+        
+                        
+                            <button type="submit" class="btn btn-primary ml-1">
+                                <i class="bx bx-check d-block d-sm-none"></i>
+                                <span class="d-none d-sm-block">Simpan</span>
+                            </button>
+                        
+                    </div>
+        </form>
+    </div>
+</div>
+</div>
+@foreach ($kerugian_daerah_perumahan as $item1)
+    <div class="modal fade" id="edit_data_kerugian_daerah_perumahan{{ $item1->id_kerugian_daerah_perumahan  }}" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
+            role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle"> Edit Data
+                    </h5>
+                    <button type="button" class="close" data-bs-dismiss="modal"
+                        aria-label="Close">
+                        <i data-feather="x"></i>
+                    </button>
+                </div>
+                <form action="{{ route('data-kerugian-daerah-perumahan.update', $item1->id_kerugian_daerah_perumahan) }}" method="POST">
+                    @csrf  @method('patch')
+                     <div class="modal-body">
+                        <div class="form-group">
+                            <label for="nama_kriteria">Nama Kriteria</label>
+                            <input type="text" name="nama_kriteria_kerugian_daerah_perumahan" value="{{  old('nama_sub_kriteria', $item1->nama_sub_kriteria)  }}" class="form-control"  >
+                            {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
+                        </div>
+                        <div class="form-group">
+                            <label for="bobot_kriteria">Bobot Kriteria</label>
+                            <input type="text" name="nilai_kerugian_daerah_perumahan" maxlength="1" onkeypress="return hanyaAngka(event)" value="{{  old('nilai', $item1->nilai)  }}" class="form-control"  >
+                            {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
+                        </div>
+
+                    </div>
+                       
+                        
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light-secondary"
+                            data-bs-dismiss="modal">
+                            <i class="bx bx-x d-block d-sm-none"></i>
+                            <span class="d-none d-sm-block">Kembali</span>
+                        </button>
+        
+                        
+                            <button type="submit" class="btn btn-primary ml-1">
+                                <i class="bx bx-check d-block d-sm-none"></i>
+                                <span class="d-none d-sm-block">Simpan</span>
+                            </button>
+                        
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+@endforeach
+{{-- tutupkerugian ekonomi --}}
 
 
 

@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 use App\Models\sub_luas_genangan;
 use App\Models\sub_tinggi_genangan;
 use App\Models\sub_lamanya_genangan;
+use App\Models\sub_kerugian_ekonomi;
+use App\Models\sub_kerugian_daerah_perumahan;
 
 use Illuminate\Http\Request;
 
@@ -20,8 +22,10 @@ class DataSubKriteriaController extends Controller
         $tinggi_genangan = sub_tinggi_genangan::all();
         $luas_genangan = sub_luas_genangan::all();
         $lamanya_genangan = sub_lamanya_genangan::all();
+        $kerugian_ekonomi = sub_kerugian_ekonomi::all();
+        $kerugian_daerah_perumahan = sub_kerugian_daerah_perumahan::all();
 
-        return view('Admin.main.subkriteria', compact('tinggi_genangan', 'luas_genangan' , 'lamanya_genangan'));
+        return view('Admin.main.subkriteria', compact('tinggi_genangan', 'luas_genangan' , 'lamanya_genangan' , 'kerugian_ekonomi', 'kerugian_daerah_perumahan'));
     }
 
     public function store(Request $request)
