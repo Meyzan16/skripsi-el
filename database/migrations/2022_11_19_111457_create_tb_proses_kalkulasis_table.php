@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('tb_proses_kalkulasis', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_altenatif')->nullable();
+            $table->foreignId('id_alternatif')->nullable();
             $table->foreignId('id_tinggi_genangan')->nullable();
             $table->foreignId('id_luas_genangan')->nullable();
             $table->foreignId('id_lamanya_genangan')->nullable();

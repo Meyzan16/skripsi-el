@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class tb_proses_kalkulasi extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'id_alternatif'
+    ];
+
 }
