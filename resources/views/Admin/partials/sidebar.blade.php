@@ -35,6 +35,13 @@
                     </a>
                 </li>
 
+                <li class="sidebar-item {{ request()->is('admin/data-alternatif*') ? 'active' : '' }}">
+                    <a href="{{route('data-alternatif.index')}}" class='sidebar-link'>
+                        <i class="bi bi-grid-fill"></i>
+                        <span>Data Alternatif</span>
+                    </a>
+                </li>
+
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-stack"></i>
