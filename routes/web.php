@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\SubGangguanTransportasiController;
 use App\Http\Controllers\Admin\SubHakMilikPribadiController;
 use App\Http\Controllers\Admin\SubGangguanSosialController;
 use App\Http\Controllers\Admin\DataAlternatifController;
+use App\Http\Controllers\Admin\ConnexionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,7 @@ Route::get('/', function () {
 
 //SISWA
 Route::group([
+    'middleware' => 'auth',
     'prefix' => 'admin/'], function(){
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('/data-kriteria', DatakriteriaController::class);
@@ -57,3 +59,8 @@ Route::group([
 
 
 });
+
+//login admin dan verifikator
+Route::get('/connexion', [ConnexionController::Class, 'index'] )->name('connexion');
+Route::post('/connexion', [ConnexionController::Class, 'authenticate'] )->name('proses_connexion');
+Route::post('/logout-connexion', [ConnexionController::Class, 'logout_connexion'])->name('logout-connexion');

@@ -42,6 +42,18 @@
                     </a>
                 </li>
 
+                <li class="sidebar-item ">
+                    <form action="{{ route('logout-connexion')}}" method="POST">
+                        @csrf
+                        <button class="sidebar-link dropdown-item d-flex " type="submit">
+                            <i class="bi bi-grid-fill"></i>
+                            <span>Logout</span>
+                        </button>
+                      </form>
+
+                   
+                </li>
+
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-stack"></i>

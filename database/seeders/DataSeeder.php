@@ -7,6 +7,7 @@ use App\Models\sub_tinggi_genangan;
 use App\Models\tb_data_alternatif;
 use App\Models\tb_data_kriteria;
 use App\Models\tb_proses_kalkulasi;
+use App\Models\user;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -116,9 +117,15 @@ class DataSeeder extends Seeder
 
 
         tb_proses_kalkulasi::create([
-            'id_altenatif' => '1',
+            'id_alternatif' => '1',
             'id_tinggi_genangan' => '1',
             'id_luas_genangan' => '1',
+        ]);
+
+        user::create([
+            'name' => 'admin',
+            'username' => 'adzanmagrib',
+            'password' => bcrypt('monmon16'),
         ]);
         
 
