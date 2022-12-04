@@ -42,6 +42,13 @@
                     </a>
                 </li>
 
+                <li class="sidebar-item {{ request()->is('admin/data-penilaian*') ? 'active' : '' }}">
+                    <a href="{{route('data-penilaian.index')}}" class='sidebar-link'>
+                        <i class="bi bi-grid-fill"></i>
+                        <span>Data Penilaian</span>
+                    </a>
+                </li>
+
                 <li class="sidebar-item ">
                     <form action="{{ route('logout-connexion')}}" method="POST">
                         @csrf

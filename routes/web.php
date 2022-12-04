@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\SubGangguanTransportasiController;
 use App\Http\Controllers\Admin\SubHakMilikPribadiController;
 use App\Http\Controllers\Admin\SubGangguanSosialController;
 use App\Http\Controllers\Admin\DataAlternatifController;
+use App\Http\Controllers\Admin\DataPenilaianController;
 use App\Http\Controllers\Admin\ConnexionController;
 
 /*
@@ -26,9 +27,9 @@ use App\Http\Controllers\Admin\ConnexionController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 //SISWA
 Route::group([
@@ -46,6 +47,7 @@ Route::group([
     Route::resource('/data-hak-milik-pribadi', SubHakMilikPribadiController::class);
     Route::resource('/data-gangguan-sosial', SubGangguanSosialController::class);
     Route::resource('/data-alternatif', DataAlternatifController::class);
+    Route::resource('/data-penilaian', DataPenilaianController::class);
 
     // Route::group(['prefix'  => 'orang-tua/'],function(){
     //     Route::get('/', [DatakriteriaController::Class, 'index'])->name('admin.biodata-diri.index');
@@ -61,6 +63,6 @@ Route::group([
 });
 
 //login admin dan verifikator
-Route::get('/connexion', [ConnexionController::Class, 'index'] )->name('connexion');
+Route::get('/', [ConnexionController::Class, 'index'] )->name('connexion');
 Route::post('/connexion', [ConnexionController::Class, 'authenticate'] )->name('proses_connexion');
 Route::post('/logout-connexion', [ConnexionController::Class, 'logout_connexion'])->name('logout-connexion');

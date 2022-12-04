@@ -22,7 +22,7 @@ return new class extends Migration
             $table->foreignId('id_frekuensi_genangan')->nullable();
             $table->foreignId('id_kerugian_ekonomi')->nullable();
             $table->foreignId('id_gangguan_sosial')->nullable();
-            $table->foreignId('id_gangguan_tranportasi')->nullable();
+            $table->foreignId('id_gangguan_transportasi')->nullable();
             $table->foreignId('id_kerugian_daerah_perumahan')->nullable();
             $table->foreignId('id_hak_milik_pribadi')->nullable();
             $table->timestamps();

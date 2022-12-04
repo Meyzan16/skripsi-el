@@ -64,6 +64,7 @@ class DataAlternatifController extends Controller
     public function destroy($id)
     {
         tb_data_alternatif::where('id', $id)->delete();   
+        tb_proses_kalkulasi::where('id_alternatif', $id)->delete();   
         return redirect()->route('data-alternatif.index')->with(['success' =>  'Data Berhasil dihapus']);
     }
 }
