@@ -1,0 +1,45 @@
+                    <div class="form-group">
+                        <label for="nama_kriteria">Luas Genangan</label>
+                        <input type="text" readonly value="{{  old('id_luas_genangan', $item1->sub_luas_genangan->nama_sub_kriteria)  }}" class="form-control"  >
+                        {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
+                    </div>  
+                    <div class="form-group">
+                        <label for="nama_kriteria">Lamanya Genangan</label>
+                        <input type="text" readonly value="{{  old('id_lamanya_genangan', $item1->sub_lamanya_genangan->nama_sub_kriteria)  }}" class="form-control"  >
+                        {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
+                    </div>  
+                    <div class="form-group">
+                        <label for="nama_kriteria">Kerugian Ekonomi</label>
+                        <input type="text" readonly value="{{  old('id_kerugian_ekonomi', $item1->sub_kerugian_ekonomi->nama_sub_kriteria)  }}" class="form-control"  >
+                        {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
+                    </div>  
+
+                    <div class="form-group">
+                        <label for="nama_kriteria">Kerugian Pada Daerah Perumahan</label>
+                        <input type="text" readonly value="{{  old('id_kerugian_daerah_perumahan', $item1->sub_kerugian_daerah_perumahan->nama_sub_kriteria)  }}" class="form-control"  >
+                        {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
+                    </div> 
+
+                    <div class="form-group">
+                        <label for="nama_kriteria">Frekuensi Genangan</label>
+                        <input type="text" readonly value="{{  old('id_frekuensi_genangan', $item1->sub_frekuensi_genangan->nama_sub_kriteria)  }}" class="form-control"  >
+                        {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
+                    </div>  
+
+                    <div class="form-group">
+                        <label for="nama_kriteria">Kerugian dan Gangguan Transportasi</label>
+                        <input type="text" readonly value="{{  old('id_gangguan_transportasi', $item1->sub_gangguan_transportasi->nama_sub_kriteria)  }}" class="form-control"  >
+                        {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
+                    </div>  
+                    
+                    <div class="form-group">
+                        <label for="nama_kriteria">Kerugian Hak Milik Pribadi</label>
+                        <input type="text" readonly value="{{  old('id_hak_milik_pribadi', $item1->sub_hak_milik_pribadi->nama_sub_kriteria)  }}" class="form-control"  >
+                        {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
+                    </div>  
+
+                    <div class="form-group">
+                        <label for="nama_kriteria">Gangguan sosial dan fasilitas pemerintahi</label>
+                        <input type="text" readonly value="{{  old('id_gangguan_sosial', $item1->sub_gangguan_sosial->nama_sub_kriteria)  }}" class="form-control"  >
+                        {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
+                    </div>  

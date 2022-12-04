@@ -19,7 +19,9 @@ class DataPenilaianController extends Controller
 {
     public function index()
     {
-        $proses_kalkulasi = tb_proses_kalkulasi::with(['tb_data_alternatif'])->get();
+        $proses_kalkulasi = tb_proses_kalkulasi::all();
+        
+        // return $proses_kalkulasi;
         $tinggi_genangan = sub_tinggi_genangan::all();
         $luas_genangan = sub_luas_genangan::all();
         $lamanya_genangan = sub_lamanya_genangan::all();

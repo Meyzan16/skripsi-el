@@ -51,6 +51,7 @@
                                         <td>{{ $item->tb_data_alternatif->nama_daerah }}</td>
                                         <td>
                                             <a class="badge bg-warning"   data-bs-toggle="modal" data-bs-target="#edit_data{{ $item->id }}">  <i class="fa fa-edit"> </i>  </a>                
+                                            <a class="badge bg-primary"   data-bs-toggle="modal" data-bs-target="#show_data{{ $item->id }}">  <i class="fa fa-eye"> </i>  </a>                
                                         </td>
                                     </tr>
                                     @endforeach
@@ -69,7 +70,7 @@
         role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle"> Input Penilaian 
+                <h5 class="modal-title" id="exampleModalCenterTitle"> Input Penilaian {{$item1->id}}
                 </h5>
                 <button type="button" class="close" data-bs-dismiss="modal"
                     aria-label="Close">
@@ -78,7 +79,8 @@
             </div>
             <form action="{{ route('data-penilaian.update', $item1->id)}}" method="POST">
                 @csrf  @method('patch')
-                 <div class="modal-body" style="overflow: scroll; height:520px">
+                 <div class="modal-body" style="overflow: scroll; height:500px">
+
                     <div class="form-group">
                         <label for="nama_kriteria">Tinggi Genangan</label>
                         <select name="id_tinggi_genangan" class="form-control" required >
@@ -197,6 +199,122 @@
                 </div>
 
             </form>
+        </div>
+    </div>
+</div>
+@endforeach
+
+
+@foreach ($proses_kalkulasi as $item1)
+<div class="modal fade" id="show_data{{ $item1->id  }}" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
+        role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle"> Input Penilaian {{$item1->tb_data_alternatif->nama_daerah}}
+                </h5>
+                <button type="button" class="close" data-bs-dismiss="modal"
+                    aria-label="Close">
+                    <i data-feather="x"></i>
+                </button>
+            </div>
+          
+                 <div class="modal-body" style="overflow: scroll; height:600px">
+
+                    <div class="form-group">
+                        <label for="nama_kriteria">Tinggi Genangan</label>
+                        @if (!empty($item1->id_tinggi_genangan))
+                        <input type="text" readonly value="{{ $item1->sub_tinggi_genangan->nama_sub_kriteria }}" class="form-control"  >
+                        @else
+                        <input type="text" readonly class="form-control"  >
+                        @endif
+                        {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
+                    </div>  
+
+                    <div class="form-group">
+                        <label for="nama_kriteria">Luas Genangan</label>
+                        @if (!empty($item1->id_luas_genangan))
+                        <input type="text" readonly value="{{  $item1->sub_luas_genangan->nama_sub_kriteria  }}" class="form-control"  >
+                        @else
+                        <input type="text" readonly class="form-control"  >
+                        @endif
+                        {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
+                    </div>  
+                    <div class="form-group">
+                        <label for="nama_kriteria">Lamanya Genangan</label>
+                        @if (!empty($item1->id_lamanya_genangan))
+                        <input type="text" readonly value="{{   $item1->sub_lamanya_genangan->nama_sub_kriteria  }}" class="form-control"  >
+                        @else
+                        <input type="text" readonly class="form-control"  >
+                        @endif
+                        {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
+                    </div>  
+
+                    <div class="form-group">
+                        <label for="nama_kriteria">Kerugian Ekonomi</label>
+                        @if (!empty($item1->id_kerugian_ekonomi))
+                        <input type="text" readonly value="{{   $item1->sub_kerugian_ekonomi->nama_sub_kriteria }}" class="form-control"  >
+                        @else
+                        <input type="text" readonly class="form-control"  >
+                        @endif
+                        {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
+                    </div>  
+
+                    <div class="form-group">
+                        <label for="nama_kriteria">Kerugian Pada Daerah Perumahan</label>
+                        @if (!empty($item1->id_kerugian_daerah_perumahan))
+                        <input type="text" readonly value="{{  $item1->sub_kerugian_daerah_perumahan->nama_sub_kriteria  }}" class="form-control"  >
+                        @else
+                        <input type="text" readonly class="form-control"  >
+                        @endif
+                        {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
+                    </div> 
+
+                    <div class="form-group">
+                        <label for="nama_kriteria">Frekuensi Genangan</label>
+                        @if (!empty($item1->id_frekuensi_genangan))
+                        <input type="text" readonly value="{{   $item1->sub_frekuensi_genangan->nama_sub_kriteria }}" class="form-control"  >
+                        @else
+                        <input type="text" readonly class="form-control"  >
+                        @endif
+                        {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
+                    </div>  
+
+                    <div class="form-group">
+                        <label for="nama_kriteria">Kerugian dan Gangguan Transportasi</label>
+                        @if (!empty($item1->id_gangguan_transportasi))
+                        <input type="text" readonly value="{{  $item1->sub_gangguan_transportasi->nama_sub_kriteria }}" class="form-control"  >
+                        @else
+                        <input type="text" readonly class="form-control"  >
+                        @endif
+                        
+                        {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
+                    </div>  
+                    
+                    <div class="form-group">
+                        <label for="nama_kriteria">Kerugian Hak Milik Pribadi</label>
+                        @if (!empty($item1->id_hak_milik_pribadi))
+                        <input type="text" readonly value="{{  $item1->sub_hak_milik_pribadi->nama_sub_kriteria  }}" class="form-control"  >
+                        @else
+                        <input type="text" readonly class="form-control"  >
+                        @endif
+                        {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
+                    </div>  
+
+                    <div class="form-group">
+                        <label for="nama_kriteria">Gangguan sosial dan fasilitas pemerintahi</label>
+                        @if (!empty($item1->id_gangguan_sosial))
+                        <input type="text" readonly value="{{ $item1->sub_gangguan_sosial->nama_sub_kriteria  }}" class="form-control"  >
+                        @else
+                        <input type="text" readonly class="form-control"  >
+                        @endif
+                        {{-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> --}}
+                    </div>  
+
+                   
+
+                </div>    
         </div>
     </div>
 </div>
